@@ -49,7 +49,20 @@ class ABR{
             else
                 p->right = n;
         }
+        void preorder(Node<K,V>*n, ostream&out){
+            if(!n) return;
+            out << n->key << ":" << n->value << " ";
+            preorder(n->left,out);
+            preorder(n->right,out);
+        }
 
+        void postorder(Node<K,V>*n, ostream&out){
+            if(!n) return;
+            postorder(n->left,out);
+            postorder(n->right, out);
+            out << n->key << ": "<< n->value << " ";
+        }
+        
         Node<K,V>* search(K key){
             Node<K,V>* curr = root;
             while(curr && curr->key != key){
@@ -95,19 +108,7 @@ class ABR{
         }
 
 
-        void preorder(Node<K,V>*n, ostream&out){
-            if(!n) return;
-            out << n->key << ":" << n->value << " ";
-            preorder(n->left,out);
-            preorder(n->right,out);
-        }
 
-        void postorder(Node<K,V>*n, ostream&out){
-            if(!n) return;
-            postorder(n->left,out);
-            postorder(n->right, out);
-            out << n->key << ": "<< n->value << " ";
-        }
 };
 
 
