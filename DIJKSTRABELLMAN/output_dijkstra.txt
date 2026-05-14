@@ -1,0 +1,5 @@
+Nodo: E	Distanza: -1
+Nodo: B	Distanza: -2
+Nodo: D	Distanza: 3
+Nodo: C	Distanza: 2
+Nodo: A	Distanza: 0

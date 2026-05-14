@@ -1,0 +1,9 @@
+Lista adiacenza: 
+3->0 
+2->3 
+1->2 3 
+0->1 2 
+
+ ricerca ciclo hamiltoniano da 0:
+ciclo trovato:
+0 1 2 3 0 

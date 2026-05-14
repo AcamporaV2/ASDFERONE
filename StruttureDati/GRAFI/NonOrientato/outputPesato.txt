@@ -1,0 +1,8 @@
+Lista adiacenza(Pesata)
+0->
+1->(2, W:10) 
+2->(1, W:10) (3, W:5) (3, W:9) 
+3->(2, W:5) (2, W:9) 
+
+BFS dal nodo 0
+1 2 3 

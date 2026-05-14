@@ -1,0 +1,15 @@
+Lista adiacenza (Grafo orientato): 
+4-> (1, peso: 1) (5, peso: 2) 
+3-> (4, peso: 5) 
+2-> (3, peso: 1) 
+1-> (3, peso: 4) 
+0-> (1, peso: 3) (2, peso: 2) 
+
+ Classificazione archi dopo DFS:
+Arco di Albero: (0->1)
+Arco di Albero: (1->3)
+Arco di Albero: (3->4)
+Arco all'indietro: (4->1)
+Arco di Albero: (4->5)
+Arco di Albero: (0->2)
+Arco Trasversale: (2->3)

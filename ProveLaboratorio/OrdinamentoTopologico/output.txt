@@ -1,0 +1,6 @@
+Nodo in ordine topologico: 4
+Nodo in ordine topologico: 2
+Nodo in ordine topologico: 3
+Nodo in ordine topologico: 5
+Nodo in ordine topologico: 1
+Nodo in ordine topologico: 7

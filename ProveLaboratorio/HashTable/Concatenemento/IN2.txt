@@ -1,0 +1,5 @@
+<6,nero>
+<7,bianco>
+<8,rosa>
+<9,grigio>
+<10,arancione>

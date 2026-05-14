@@ -1,0 +1,5 @@
+<1,rosso>
+<2,verde>
+<3,blu>
+<4,giallo>
+<5,viola>

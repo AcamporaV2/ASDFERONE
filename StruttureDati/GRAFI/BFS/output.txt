@@ -1,0 +1,14 @@
+lista adiacenza:
+4: (5, peso 4) 
+3: (4, peso 2) (5, peso 7) 
+2: (3, peso 2) (4, peso 1) 
+1: (2, peso 3) (3, peso 5) 
+
+Distanze dal nodo 5 (BFS):
+
+Risultati BFS:
+Nodo 5, distanza: 2
+Nodo 4, distanza: 2
+Nodo 3, distanza: 1
+Nodo 2, distanza: 1
+Nodo 1, distanza: 0

@@ -1,0 +1,3 @@
+Nodo: B	Distanza: 4
+Nodo: C	Distanza: 9
+Nodo: A	Distanza: 0

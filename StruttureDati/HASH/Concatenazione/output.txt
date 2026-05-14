@@ -1,0 +1,13 @@
+Disgiunte
+Tabella 1: 
+1-> rosso
+2-> verde
+3-> blu
+4-> giallo
+5-> viola
+Tabella 2: 
+6-> nero
+7-> bianco
+8-> rosa
+9-> grigio
+10-> arancione

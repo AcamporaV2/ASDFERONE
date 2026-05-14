@@ -1,0 +1,9 @@
+Lista di adiacenza (grafo orientato):
+3 -> 0 
+2 -> 3 
+1 -> 2 3 
+0 -> 1 2 
+
+Ricerca ciclo hamiltoniano dal nodo 0
+Ciclo trovato 
+0 1 2 3 0 
