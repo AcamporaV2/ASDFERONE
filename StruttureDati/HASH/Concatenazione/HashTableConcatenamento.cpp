@@ -39,12 +39,13 @@ class HashConc{
             }
             table[idx].push_back({key,val});
         }
-        void print(ostream&out)
-                {
-                    for(int i = 0; i < m; ++i)
-                        for(auto& item:table[i])
-                            out << item.first << "-> " << item.second << "\n";
-                }
+
+        void print(ostream&out){
+            for(int i = 0; i < m; ++i)
+                for(auto& item:table[i])
+                    out << item.first << "-> " << item.second << "\n";
+        }
+        
         bool contains(K key){
             int idx = hash(key);
             for(auto& item: table[idx])
