@@ -24,16 +24,23 @@ class ABR{
 
 
         void insert(K key, V val){
+            // Creo il nuovo nodo in anticipo: se trovo una chiave già presente,
+            // aggiorno il valore e poi elimino questo nodo temporaneo.
             Node<K,V>* n = new Node<K,V>(key,val);
+            // p tiene traccia del padre del nodo corrente; curr scende nell'albero.
             Node<K,V>* p = nullptr;
             Node<K,V>* curr = root;
 
+            // Scorro l'ABR fino a trovare la posizione di inserimento.
             while(curr){
                 p = curr;
+                // Se la chiave è minore, vado a sinistra.
                 if(key< curr->key)
                     curr = curr->left;
+                // Se la chiave è maggiore, vado a destra.
                 else if(key > curr->key)
                     curr = curr->right;
+                // Chiave già presente: aggiorno il valore e non inserisco un duplicato.
                 else {
                     curr->value = val;
                     delete n;
@@ -41,9 +48,12 @@ class ABR{
                 }
             }
 
+            // Collegamento finale: il nuovo nodo diventa figlio del padre trovato.
             n->parent = p;
+            // Se p è nullo, l'albero era vuoto e il nuovo nodo diventa la radice.
             if(!p)
                 root = n;
+            // Altrimenti lo attacco al lato coerente con l'ordine binario.
             else if(key < p->key)
                 p->left = n;
             else

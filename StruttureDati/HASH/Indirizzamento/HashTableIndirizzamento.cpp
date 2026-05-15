@@ -83,13 +83,13 @@ class HashAperta{
     //--------------------------------------------------------------------
         V* find (K key){
             int idx = hash(key);
-            int idx = start;
+            int start = idx;
 
 
             while(table[idx].stato != EMPTY){
                 if(table[idx].stato == ACTIVE && table[idx].key == key)
                 {
-                    return &(table[idx].val);
+                    return &(table[idx].value);
                 }
                 idx = (idx +1 ) % m;
                 if (idx == start)
@@ -106,7 +106,7 @@ class HashAperta{
             while(table[idx].stato != EMPTY)
             {
                 if(table[idx].stato == ACTIVE && table[idx].key == key){
-                    table[idx].stato == DELETED;
+                    table[idx].stato = DELETED;
                     return true;
                 }
                 idx = (idx+1) %m;
@@ -142,6 +142,26 @@ int main(){
     out << "Tabella indirizzamento Aperto:\n";
     H1.print(out);
 
+    cout << "chiave da cercare: ";
+    int k;
+    if (cin>>k){
+        string*val = H1.find(k);
+        if(val)
+            cout <<"Trovato: "<< *val << "\n";
+        else 
+            cout <<"Non trovato \n";
+    }
 
-    return 0;
+    cout << "chiave da eliminare: ";
+    if(cin >> k){
+        if(H1.remove(k))
+            cout << "Eliminato con successo \n";
+        else 
+            cout << "Non trovata";
+
+        if (H1.find(k)) cout << "ERRORE: La chiave e' ancora presente.\n";
+        else cout << "OK: La chiave non si trova piu' con find().\n";
+    }
+
+    return 0;   
 }
