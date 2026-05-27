@@ -1,51 +1,75 @@
+/*
+
+.Usando il paradigma della programmazione ad oggetti ed linguaggio C++ 11
+progettare ed implementare una classe grafo che consenta di caricare dati di un
+grafo non orientato pesato G contenuti nel file GRP.txt II file testo contiene nel
+primo rigo due interi separati da uno spazio che indicano, rispettivamente, il
+numero di nodi ed il numero di archi.
+I successivi righi contengono ciascuno tre numeri, separati da uno spazio, per
+indicare il nodo sorgente, nodo destinazione ed il peso di ogni arco. Dotare la
+classe di un metodo BFS(s) che scrive nel file OUT.txt, per ogni nodo, la distanza
+dal nodo s ed il proprio predecessore
+
+Dotare la classe dei metodi PRIM() e PRINT_MST() per calcolare e stampare a video
+il minimum spanning tree. (pt. 6)
+
+.Dotare la classe del metodo IS_BINARY(MST) che restituisca TRUE se MST è un
+albero binario e FALSE altrimenti. (pt. 6)
+
+*/
+
 #include <iostream>
 #include <fstream>
-#include <vector>
 #include <queue>
+#include <vector>
 
 using namespace std;
+
 enum Color {white, grey, black};
 
-template<class T>
-class Nodo{
+template <class T>
+class Node{
     public:
         T val;
-        vector<pair<Nodo<T>*, int>> adj;
+        vector<pair<Node<T>*, int>> adj;
         Color color;
         int dist;
-        
-        Nodo(T val): val(val), color(white), dist(-1){}
 
-        void add_edge(Nodo<T>*v, int weight){
+        Node(T val): val(val), color(white), dist(-1) {}
+
+        void add_edge(Node<T>*v, int weight){
             adj.push_back({v,weight});
             v->adj.push_back({this,weight});
-        }
+        }  
 };
 
-template<class T>
+
+template <class T>
 class Grafo{
     public:
+        vector<Node<T>*> nodes;
 
-        vector<Nodo<T>*> nodes;
 
         void add_node(T val){
-            nodes.push_back(new Nodo<T>(val));
+            nodes.push_back(new Node<T>(val));
         }
 
-        void add_edge(T u, T v, int weight){
-            Nodo<T>* node_u = nullptr;
-            Nodo<T>* node_v = nullptr;
 
-            for(auto node : nodes){
-                if(node->val == u) 
+        void add_edge(T u, T v, int weight){
+            Node<T>* node_u = nullptr;
+            Node<T>* node_v = nullptr;
+
+            for(auto node: nodes){
+                if(node->val == u)
                     node_u = node;
                 if(node->val == v)
                     node_v = node;
             
             }
 
-            if(node_u && node_v){
-                node_u->add_edge(node_v, weight);
+            if(node_u && node_v)
+            {
+                node_u->add_edge(node_v,weight);
             }
         }
 
@@ -57,7 +81,7 @@ class Grafo{
         }
 
         void bfs(T start_val, ostream&out){
-            Nodo<T>* start_node = nullptr;
+            Node<T>* start_node = nullptr;
             for(auto node: nodes)
             {
                 if(node->val == start_val)
@@ -70,23 +94,23 @@ class Grafo{
             if(!start_node) return;
 
             reset();
-            queue<Nodo<T>*>q;
+            queue<Node<T>*> q;
             start_node->color = grey;
             start_node->dist = 0;
             q.push(start_node);
 
             while(!q.empty()){
-                Nodo<T>*u = q.front();
+                Node<T>*u = q.front();
                 q.pop();
                 out << u->val << " ";
+                
 
                 for(auto edge : u->adj){
-                    Nodo<T>*v = edge.first;
+                    Node<T>*v = edge.first;
                     if(v->color == white)
                     {
                         v->color = grey;
-
-                        v->dist = u->dist + 1;
+                        v->dist = u->dist +1;
                         q.push(v);
                     }
                 }
@@ -94,11 +118,11 @@ class Grafo{
             }
         }
 
-        void print(ostream &out){
+        void print(ostream & out){
             for(auto node: nodes){
                 out << node->val << "->";
                 for(auto edge: node->adj){
-                    out << "(" << edge.first->val << ", W:" << edge.second << ") ";
+                    out << "(" << edge.first->val << ", W: " << edge.second << ") ";
                 }
                 out << "\n";
             }
@@ -106,12 +130,13 @@ class Grafo{
 
 };
 
+
 int main()
 {
-    ifstream in("inputPesato.txt");
+    ifstream in("GrafoMaggio2023_input.txt");
+    ofstream out("GrafoMaggio2023_output.txt");
     int n,m;
     in >> n >> m;
-
     Grafo<int> g;
     for(int i = 0; i < m; ++i)
     {
@@ -125,14 +150,9 @@ int main()
             g.add_edge(u,v,w);
     }
 
-    ofstream out ("outputPesato.txt");
-    out << "Lista adiacenza(Pesata)\n";
-    g.print(out);
-
-    out<< "\nBFS dal nodo 0\n";
+    out << "\nBFS dal nodo 0\n";
     g.bfs(1,out);
-    
-    cout<<"Finito";
 
+    cout << "finito";
     return 0;
 }
