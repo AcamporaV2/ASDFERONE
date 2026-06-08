@@ -154,7 +154,7 @@ class GrafoUndiretto {
 
 int main() {
     ifstream in("inputNonOrientato.txt");
-    ofstream out("output_undirected.txt");
+    ofstream out("output.txt");
 
     if (!in || !out) {
         cerr << "Errore apertura file.\n";

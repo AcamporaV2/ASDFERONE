@@ -21,4 +21,4 @@ V: 010110
 F: 0101110
 E: 011
 
-Decodifica della stringa '011001': ET
+Decodifica della stringa '11111111111111110': SSSS

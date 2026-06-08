@@ -1,0 +1,12 @@
+Tabella 1: 
+1->nico
+2->attils
+3->lollo
+4->giangi
+5->ghe
+Tabella 2: 
+6->rosso
+7->verde
+8->blu
+9->giallo
+10->viola

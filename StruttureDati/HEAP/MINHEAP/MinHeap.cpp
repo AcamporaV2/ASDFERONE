@@ -48,6 +48,7 @@ class MinHeap{
         }
 
     public: 
+        //costruttore
         MinHeap(const vector<T>&vec) : data(vec) {
             for(int i = data.size()/2- 1; i >=0; --i)
                 heapify(i, data.size());
