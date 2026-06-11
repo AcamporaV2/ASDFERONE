@@ -1,3 +1,4 @@
+// Librerie standard usate per I/O, strutture dati e stringhe
 #include <iostream>
 #include <fstream>
 #include <queue>
@@ -8,18 +9,20 @@
 using namespace std;
 
 
+// Nodo dell'albero di Huffman (foglia o interno)
 class Node{
     public:
 
-    char ch;
-    int freq;
-    Node* left;
-    Node* right;
+    char ch;      // carattere (solo per foglie)
+    int freq;     // frequenza del carattere
+    Node* left;   // figlio sinistro
+    Node* right;  // figlio destro
 
     Node(char ch, int freq, Node* left = nullptr, Node* right = nullptr)
         : ch(ch), freq(freq), left(left), right(right) {}
 };
 
+// Comparatore per la coda di priorità (min-heap sulla freq)
 struct Compare{
 
     bool operator() (Node* a, Node* b)
@@ -29,16 +32,18 @@ struct Compare{
 };
 
 
+// Classe che costruisce e gestisce la codifica/decodifica Huffman
 class Huffman{
     private:
-        Node* root = nullptr;
-        unordered_map<char, string> codes;
+        Node* root = nullptr;                    // radice dell'albero
+        unordered_map<char, string> codes;       // tabella carattere -> codice
 
+        // Genera ricorsivamente i codici a partire dalla radice
         void genera_codici(Node* node, const string& current_code){
             if(!node) return;
 
             if(!node->left && !node->right){
-                codes[node->ch] = current_code;
+                codes[node->ch] = current_code; // assegnazione codice alla foglia
             }
 
             genera_codici(node->left, current_code + "0");
@@ -47,6 +52,7 @@ class Huffman{
 
     public:
 
+        // Costruisce l'albero di Huffman dai dati (char, freq)
         void build(const vector<pair<char,int>>& data)
         {
             if(data.empty()) return;
@@ -54,9 +60,10 @@ class Huffman{
             priority_queue<Node*, vector<Node*>, Compare> pq;
             for(auto & [ch, freq]: data)
             {
-                pq.push(new Node(ch,freq));
+                pq.push(new Node(ch,freq)); // crea una foglia per ogni coppia
             }
 
+            // Unisce i nodi a coppie fino a ottenere una sola radice
             while(pq.size() > 1)
             {
                 Node* left = pq.top(); pq.pop();
@@ -66,9 +73,10 @@ class Huffman{
             }
 
             root = pq.top();
-            genera_codici(root, "");
+            genera_codici(root, ""); // popola la tabella dei codici
         }
 
+        // Stampa i codici su uno stream di output
         void print_codes(ostream & out){
             out << "codici di huffman:\n";
 
@@ -77,6 +85,7 @@ class Huffman{
             }
         }
 
+        // Decodifica una stringa di bit usando l'albero
         string decode(const string & encoded_str) 
         {
             string decoded= "";
@@ -86,17 +95,17 @@ class Huffman{
             {
                 if(!current) break;
                 if(bit == '0'){
-                    current = current->left;
+                    current = current->left;   // scendi a sinistra
                 } else if(bit == '1'){
-                    current = current->right;
+                    current = current->right;  // scendi a destra
                 } else {
-                    continue;
+                    continue; // ignora caratteri non validi
                 }
 
 
                 if(current && !current->left && !current->right){
-                    decoded += current->ch;
-                    current = root;
+                    decoded += current->ch; // raggiunta una foglia -> carattere
+                    current = root;         // ritorna alla radice
                 }
             }
             return decoded;
@@ -104,26 +113,28 @@ class Huffman{
 };
 
 
+// Programma principale: legge coppie (char freq), costruisce Huffman e decodifica
 int main()
 {
-    ifstream in("input.txt");
-    ofstream out("output.txt");
+    ifstream in("input.txt");        // file di input con coppie char freq
+    ofstream out("output.txt");      // file di output per i codici
 
     vector<pair<char,int>> data;
     char ch;
     int freq;
 
+    // Legge fino a EOF: coppia char freq per riga/stream
     while(in >> ch >> freq)
     {
         data.emplace_back(ch,freq);
     }
 
     Huffman h;
-    h.build(data);
-    h.print_codes(out);
+    h.build(data);          // costruisce l'albero e i codici
+    h.print_codes(out);     // salva i codici su output.txt
 
 
-     // Esempio: decodifica di una stringa codificata (da inserire o leggere)
+    // Esempio: decodifica di una stringa codificata (da inserire o leggere)
     // Qui come esempio stringa codificata codici concatenati, ad esempio "010011..."
     string encoded_string;
     cout << "Inserisci la stringa codificata da decodificare (es. 010011...): ";

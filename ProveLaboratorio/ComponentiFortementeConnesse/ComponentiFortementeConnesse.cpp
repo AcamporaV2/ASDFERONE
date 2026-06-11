@@ -82,7 +82,7 @@ class GrafoDiretto{
         Node<T>* to   = nodes[v];
 
         auto* edge = new Edge<T>(from, to, weight);
-        auto* edge_rev = new Edge<T>(from, to, weight);
+        auto* edge_rev = new Edge<T>(to, from, weight);
 
         adj[u].push_back(edge);
         adj_transposed[v].push_back(edge_rev);

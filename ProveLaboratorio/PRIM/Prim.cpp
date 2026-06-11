@@ -7,7 +7,7 @@
 
 using namespace std;
 
-
+//usiamo i colori white e black solo per indicare quelli già fissiati nell'albero minimo
 enum class Color {White, Grey, Black};
 
 const int INF = 1e9;
@@ -90,6 +90,7 @@ class GrafoNondiretto{
                 out << "nodo iniziale non trovato\n";
                 return;
             }
+            
             // Crea la priority queue: il nodo con distanza minore esce per primo
             auto cmp = [](Node<T>* a, Node<T>* b) { return a->distance > b->distance; };
             priority_queue<Node<T>*, vector<Node<T>*>, decltype(cmp)> pq(cmp);
