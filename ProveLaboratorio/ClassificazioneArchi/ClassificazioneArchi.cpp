@@ -60,7 +60,7 @@ class GrafoDiretto{
                 } else if(neighbor->color == Color::Grey){
                     out << "Arco all'indietro: (" << node->value << "->" << neighbor->value << ")\n";
                 } else if(neighbor->color == Color::Black){
-                    if(node->tempo_scoperta < node->tempo_finale){
+                    if(node->tempo_scoperta < neighbor->tempo_finale){
                         out << "Arco in Avanti : (" << node->value << "->" << neighbor->value << ")\n";
                     } else {
                         out << "Arco Trasversale: (" << node->value << "->" << neighbor->value << ")\n";

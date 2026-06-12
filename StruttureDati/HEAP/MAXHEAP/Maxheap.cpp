@@ -33,7 +33,7 @@ class MaxHeap{
             if(largest!=i)
             {
                 swap(data[i], data[largest]);
-                heapify(i,largest);
+                heapify(largest,size);
             }
         }
     
