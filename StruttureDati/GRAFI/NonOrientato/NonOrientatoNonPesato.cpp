@@ -118,6 +118,9 @@ int main()
 
     Grafo<int> g;
 
+     for (int i = 0; i < n; ++i) {
+        g.add_node(i);
+    }
     for(int i = 0; i < m; ++i)
     {
         int u,v;

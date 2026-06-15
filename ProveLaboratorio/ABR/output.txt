@@ -7,6 +7,7 @@ chiave: 12, valore: Z
 chiave: 10, valore: L
 chiave: 25, valore: P
 chiave: 20, valore: C
+chiave: 22, valore: *
 chiave: 30, valore: F
 
 Postorder: 
@@ -15,6 +16,7 @@ chiave: 3, valore: Q
 chiave: 10, valore: L
 chiave: 12, valore: Z
 chiave: 8, valore: M
+chiave: 22, valore: *
 chiave: 20, valore: C
 chiave: 30, valore: F
 chiave: 25, valore: P
