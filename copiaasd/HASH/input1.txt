@@ -1,0 +1,11 @@
+<3,ABC>
+<21,CER>
+<1,Nbs>
+<2,Oldi>
+<4,Test>
+<5,Hash>
+<6,Table>
+<7,Value>
+<8,Insert>
+<9,OpenAddressing>
+<10,Collision>

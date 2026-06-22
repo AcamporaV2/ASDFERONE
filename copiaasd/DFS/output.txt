@@ -1,0 +1,13 @@
+
+Tempi di scoperta/fine (DFS):
+Nodo 5: discovery=1, finish=2
+Nodo 4: discovery=3, finish=4
+Nodo 3: discovery=5, finish=6
+Nodo 2: discovery=7, finish=8
+Nodo 1: discovery=9, finish=10
+lista adiacenza:
+5 
+4 (5, peso:4)
+3 (4, peso:2)(5, peso:7)
+2 (3, peso:2)(4, peso:1)
+1 (2, peso:3)(3, peso:5)

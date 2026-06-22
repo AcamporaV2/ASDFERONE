@@ -1,0 +1,15 @@
+Lista di adiacenza: 
+5 -> ( 4, peso: 6)( 3, peso: 5)
+4 -> ( 3, peso: 2)( 5, peso: 6)( 2, peso: 7)
+3 -> ( 1, peso: 2)( 2, peso: 4)( 4, peso: 2)( 5, peso: 5)
+2 -> ( 0, peso: 3)( 1, peso: 1)( 3, peso: 4)( 4, peso: 7)
+1 -> ( 0, peso: 4)( 2, peso: 1)( 3, peso: 2)
+0 -> ( 1, peso: 4)( 2, peso: 3)
+Prim a partitre dal nodo 0 :
+Nodo iniziale: 0
+Arco (0 - 2) peso:3
+Arco (2 - 1) peso:1
+Arco (1 - 3) peso:2
+Arco (3 - 4) peso:2
+Arco (3 - 5) peso:5
+Peso totale MST: 13

@@ -1,0 +1,13 @@
+Lista adiacenza 
+4->(1, peso: 1)(5, peso: 2)
+3->(4, peso: 5)
+2->(3, peso: 1)
+1->(3, peso: 4)
+0->(1, peso: 3)(2, peso: 2)
+DFS
+Arco d'albero: (0->1)
+Arco d'albero: (1->3)
+Arco d'albero: (3->4)
+Arco all'indietro4->1Arco d'albero: (4->5)
+Arco d'albero: (0->2)
+Arco trasversale: (2->3)

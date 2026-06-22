@@ -1,0 +1,8 @@
+Lista adiacenza: 
+3->0 
+2->3 
+1->2 3 
+0->1 2 
+Ciclo hamiltoniano dal nodo 0: 
+ciclo trovato
+0 1 2 3 0 
